@@ -17,6 +17,13 @@ function init() {
   fpControls.lon = -150;
   fpControls.lat = 120;
 
+
+  
+  var fpControls_gamepad = new THREE.GamepadControls(camera);
+  
+  
+
+
   var loader = new THREE.OBJLoader();
   loader.load("resource/map/city.obj", function (object) {
 
@@ -30,6 +37,7 @@ function init() {
   function render() {
     stats.update();
     fpControls.update(clock.getDelta());
+    //fpControls_gamepad.update(clock.getDelta());
     requestAnimationFrame(render);
     renderer.render(scene, camera)
   }   
