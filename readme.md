@@ -43,7 +43,21 @@ Controller:
 |Right analog stick|Look Around|
 
 ## Screenshots
+Welcome Gate
 
+![Welcome](https://user-images.githubusercontent.com/75364000/146399304-d81d1f5d-b95b-4403-88f1-063ba2b019d4.jpeg)
+Cage 1
+
+![Cage1](https://user-images.githubusercontent.com/75364000/146399299-4d29d4de-2354-4bab-9764-3b00ece45a51.jpg)
+Cage 2
+
+![Cage2](https://user-images.githubusercontent.com/75364000/146399294-dc39f5f2-d34b-4bda-9614-75949fdb7606.jpeg)
+Cage 3
+
+![Cage3](https://user-images.githubusercontent.com/75364000/146399285-1fac262d-d07e-49e4-9e3b-1f34125e818f.jpeg)
+Cage 4
+
+![Cage4](https://user-images.githubusercontent.com/75364000/146399279-f6d21d18-e998-4e0e-a5ed-0d8041c3246e.jpeg)
 ## Game Link
 
 If you are interested in playing our game, feel free to play in here : 
