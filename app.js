@@ -175,11 +175,68 @@ function init() {
       }
     });
 
-    
+    gltfLoader_1.load('resource/animals/moose/scene.gltf', (gltf) => {
+      gltf.scene.scale.set(1.8, 1.8, 1.8);
+      //gltf.scene.applyAxisAngle(new THREE.Vector3(0,0,0), Math.PI /2);
+      var root_1 = gltf.scene;
+      root_1.position.set(23.,3.15,-15.);
+      root_1.rotation.y += Math.PI/(-5.9);
+      //root_1 = rotateAboutPoint(root_1, new THREE.Vector3(0,0,0), 1, Math.PI /2);
+      scene.add(root_1);
+      if(objects.push(root_1)){
+        console.log("berhasil menambah objek");
+      }
+    });
+    gltfLoader_1.load('resource/animals/kangaroo/scene.gltf', (gltf) => {
+      gltf.scene.scale.set(10.8, 10.8, 10.8);
+      //gltf.scene.applyAxisAngle(new THREE.Vector3(0,0,0), Math.PI /2);
+      var root_1 = gltf.scene;
+      root_1.position.set(-10.,1.5,-30.);
+      root_1.rotation.y += Math.PI/(2.9);
+      //root_1 = rotateAboutPoint(root_1, new THREE.Vector3(0,0,0), 1, Math.PI /2);
+      scene.add(root_1);
+      if(objects.push(root_1)){
+        console.log("berhasil menambah objek");
+      }
+    });
+    gltfLoader_1.load('resource/animals/hippo/scene.gltf', (gltf) => {
+      gltf.scene.scale.set(3.8, 3.8, 3.8);
+      //gltf.scene.applyAxisAngle(new THREE.Vector3(0,0,0), Math.PI /2);
+      var root_1 = gltf.scene;
+      root_1.position.set(-30.,2.3,18.);
+      root_1.rotation.y += Math.PI/(-2);
+      //root_1 = rotateAboutPoint(root_1, new THREE.Vector3(0,0,0), 1, Math.PI /2);
+      scene.add(root_1);
+      if(objects.push(root_1)){
+        console.log("berhasil menambah objek");
+      }
+    });
+    gltfLoader_1.load('resource/animals/skunk/scene.gltf', (gltf) => {
+      gltf.scene.scale.set(0.5, .5, .5);
+      //gltf.scene.applyAxisAngle(new THREE.Vector3(0,0,0), Math.PI /2);
+      var root_1 = gltf.scene;
+      root_1.position.set(-10.,0.1,-20.);
+      root_1.rotation.y += Math.PI/(2.5);
+      //root_1 = rotateAboutPoint(root_1, new THREE.Vector3(0,0,0), 1, Math.PI /2);
+      scene.add(root_1);
+      if(objects.push(root_1)){
+        console.log("berhasil menambah objek");
+      }
+    });
+    gltfLoader_1.load('resource/animals/fox/scene.gltf', (gltf) => {
+      gltf.scene.scale.set(1.3, 1.3, 1.3);
+      //gltf.scene.applyAxisAngle(new THREE.Vector3(0,0,0), Math.PI /2);
+      var root_1 = gltf.scene;
+      root_1.position.set(10.,1.4,22.);
+      root_1.rotation.y += Math.PI/(-2.5);
+      //root_1 = rotateAboutPoint(root_1, new THREE.Vector3(0,0,0), 1, Math.PI /2);
+      scene.add(root_1);
+      if(objects.push(root_1)){
+        console.log("berhasil menambah objek");
+      }
+    });
   });
 
-
-  
 
   render();
   function render() {
