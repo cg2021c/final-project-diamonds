@@ -1,5 +1,3 @@
-
-  //import { PointerLockControls } from './lib/PointerLockControls';
 function init() {
   var stats = initStats();
   var renderer = initRenderer();
@@ -7,11 +5,12 @@ function init() {
   var scene = new THREE.Scene();
   var clock = new THREE.Clock();
 
-
   //Menambahkan Object untuk intersection
   const objects = [];
 
-  // initDefaultLighting(scene);
+  //Add raycaster to for interactivity
+  //Raycaster untuk object intersection
+  raycaster = new THREE.Raycaster( new THREE.Vector3(), new THREE.Vector3( 0, 0, 0 ), 0, 0 );
 
   scene.background = new THREE.Color('lightblue');
 
@@ -32,44 +31,36 @@ function init() {
     scene.add(light.target);
   }
 
-  var fpControls = new THREE.FirstPersonControls(camera, renderer.domElement);
-  fpControls.lookSpeed = 0.4;
-  fpControls.movementSpeed = 20;
-  fpControls.lookVertical = true;
-  fpControls.constrainVertical = true;
-  fpControls.verticalMin = 1.0;
-  fpControls.verticalMax = 2.0;
-  fpControls.lon = -150;
-  fpControls.lat = 120;
-
   //First Person Locked, a better camera than just first person Controls
   let moveForward = false;
-			let moveBackward = false;
-			let moveLeft = false;
-			let moveRight = false;
-			let canJump = false;
+  let moveBackward = false;
+  let moveLeft = false;
+  let moveRight = false;
+  let canJump = false;
   var fpControls_locked = new THREE.PointerLockControls(camera, renderer.domElement);
   const instructions = document.getElementById( 'webgl-output' );
 
-
-
   instructions.addEventListener( 'click', function () {
-
     fpControls_locked.lock();
-
   } );
 
   fpControls_locked.addEventListener( 'lock', function () {
-
 
   } );
 
   fpControls_locked.addEventListener( 'unlock', function () {
 
-
   } );
 
-  
+  const webs = ['https://en.wikipedia.org/wiki/Fox',
+                'https://en.wikipedia.org/wiki/Hippopotamus',
+                'https://en.wikipedia.org/wiki/Kangaroo',
+                'https://en.wikipedia.org/wiki/Moose',
+                'https://en.wikipedia.org/wiki/Skunk',
+                'https://en.wikipedia.org/wiki/Pig',
+                'https://en.wikipedia.org/wiki/Sheep',
+                'https://en.wikipedia.org/wiki/Cattle',
+                'https://en.wikipedia.org/wiki/Giraffe'];
 
   const onKeyDown = function ( event ) {
 
@@ -98,6 +89,42 @@ function init() {
       case 'Space':
         if ( canJump === true ) velocity.y += 350;
         canJump = false;
+        break;
+
+      case 'Digit1':
+        window.open(webs[0], '_blank');
+        break;
+
+      case 'Digit2':
+        window.open(webs[1], '_blank');
+        break;
+
+      case 'Digit3':
+        window.open(webs[2], '_blank');
+        break;
+
+      case 'Digit4':
+        window.open(webs[3], '_blank');
+        break;
+
+      case 'Digit5':
+        window.open(webs[4], '_blank');
+        break;
+
+      case 'Digit6':
+        window.open(webs[5], '_blank');
+        break;
+
+      case 'Digit7':
+        window.open(webs[6], '_blank');
+        break;
+
+      case 'Digit8':
+        window.open(webs[7], '_blank');
+        break;
+
+      case 'Digit9':
+        window.open(webs[8], '_blank');
         break;
 
     }
@@ -134,8 +161,8 @@ function init() {
  
   instructions.addEventListener('keydown', onKeyDown);
   instructions.addEventListener('keyup', onKeyUp);
-  /*document.addEventListener( 'keydown', onKeyDown );
-  document.addEventListener( 'keyup', onKeyUp );*/
+  document.addEventListener( 'keydown', onKeyDown );
+  document.addEventListener( 'keyup', onKeyUp );
 
   scene.add( fpControls_locked.getObject() );
 
@@ -143,10 +170,6 @@ function init() {
 	const direction = new THREE.Vector3();
 	const vertex = new THREE.Vector3();
   let prevTime = performance.now();
-
-  //Raycaster untuk object intersection
-  raycaster = new THREE.Raycaster( new THREE.Vector3(), new THREE.Vector3( 0, 0, 0 ), 0, 0 );
-  /* raycaster = new THREE.Raycaster( new THREE.Vector3(), new THREE.Vector3( 0, - 1, 0 ), 0, 10 ); */
 
   var fpControls_gamepad = new THREE.GamepadControls(camera);
   fpControls_gamepad.lookSpeed = 1.0;
@@ -163,80 +186,60 @@ function init() {
     root.position.set(-60, -9, 130);
     scene.add(root);
     objects.push(root);
+
     gltfLoader_1.load('resource/map/scene.gltf', (gltf) =>{
       gltf.scene.scale.set(0.1, 0.1, 0.1);
-      //gltf.scene.applyAxisAngle(new THREE.Vector3(0,0,0), Math.PI /2);
       var root_1 = gltf.scene;
       root_1.rotation.y += Math.PI/(-5.9);
-      //root_1 = rotateAboutPoint(root_1, new THREE.Vector3(0,0,0), 1, Math.PI /2);
       scene.add(root_1);
-      if(objects.push(root_1)){
-        console.log("berhasil menambah objek");
-      }
+      objects.push(root_1);
     });
 
     gltfLoader_1.load('resource/animals/moose/scene.gltf', (gltf) => {
       gltf.scene.scale.set(1.8, 1.8, 1.8);
-      //gltf.scene.applyAxisAngle(new THREE.Vector3(0,0,0), Math.PI /2);
       var root_1 = gltf.scene;
       root_1.position.set(23.,3.15,-15.);
       root_1.rotation.y += Math.PI/(-5.9);
-      //root_1 = rotateAboutPoint(root_1, new THREE.Vector3(0,0,0), 1, Math.PI /2);
       scene.add(root_1);
-      if(objects.push(root_1)){
-        console.log("berhasil menambah objek");
-      }
+      objects.push(root_1);
     });
+
     gltfLoader_1.load('resource/animals/kangaroo/scene.gltf', (gltf) => {
       gltf.scene.scale.set(10.8, 10.8, 10.8);
-      //gltf.scene.applyAxisAngle(new THREE.Vector3(0,0,0), Math.PI /2);
       var root_1 = gltf.scene;
       root_1.position.set(-10.,1.5,-30.);
       root_1.rotation.y += Math.PI/(2.9);
-      //root_1 = rotateAboutPoint(root_1, new THREE.Vector3(0,0,0), 1, Math.PI /2);
       scene.add(root_1);
-      if(objects.push(root_1)){
-        console.log("berhasil menambah objek");
-      }
+      objects.push(root_1);
     });
+
     gltfLoader_1.load('resource/animals/hippo/scene.gltf', (gltf) => {
       gltf.scene.scale.set(3.8, 3.8, 3.8);
-      //gltf.scene.applyAxisAngle(new THREE.Vector3(0,0,0), Math.PI /2);
       var root_1 = gltf.scene;
       root_1.position.set(-30.,2.3,18.);
       root_1.rotation.y += Math.PI/(-2);
-      //root_1 = rotateAboutPoint(root_1, new THREE.Vector3(0,0,0), 1, Math.PI /2);
       scene.add(root_1);
-      if(objects.push(root_1)){
-        console.log("berhasil menambah objek");
-      }
+      objects.push(root_1);
     });
+
     gltfLoader_1.load('resource/animals/skunk/scene.gltf', (gltf) => {
       gltf.scene.scale.set(0.5, .5, .5);
-      //gltf.scene.applyAxisAngle(new THREE.Vector3(0,0,0), Math.PI /2);
       var root_1 = gltf.scene;
       root_1.position.set(-10.,0.1,-20.);
       root_1.rotation.y += Math.PI/(2.5);
-      //root_1 = rotateAboutPoint(root_1, new THREE.Vector3(0,0,0), 1, Math.PI /2);
       scene.add(root_1);
-      if(objects.push(root_1)){
-        console.log("berhasil menambah objek");
-      }
+      objects.push(root_1);
     });
+
     gltfLoader_1.load('resource/animals/fox/scene.gltf', (gltf) => {
       gltf.scene.scale.set(1.3, 1.3, 1.3);
-      //gltf.scene.applyAxisAngle(new THREE.Vector3(0,0,0), Math.PI /2);
       var root_1 = gltf.scene;
       root_1.position.set(10.,1.4,22.);
       root_1.rotation.y += Math.PI/(-2.5);
-      //root_1 = rotateAboutPoint(root_1, new THREE.Vector3(0,0,0), 1, Math.PI /2);
       scene.add(root_1);
-      if(objects.push(root_1)){
-        console.log("berhasil menambah objek");
-      }
+      objects.push(root_1);
     });
   });
-
 
   render();
   function render() {
@@ -254,8 +257,6 @@ function init() {
 
       const onObject = intersections.length > 0;
 
-      //console.log("Sini");
-
       var delta = ( time - prevTime ) / 1000;
       velocity.x -= velocity.x * 10.0 * delta;
       velocity.z -= velocity.z * 10.0 * delta;
@@ -268,52 +269,32 @@ function init() {
 
       if ( moveForward || moveBackward ) {
         velocity.z -= direction.z * 4.0 * delta;
-        console.log("MAJU/MUNDUR");
-        console.log(velocity.z);
       }
       if ( moveLeft || moveRight ) {
         velocity.x -= direction.x * 4.0 * delta;
-        console.log("KIRI/KANAN");
-        console.log(velocity.x);
       }
-
-       if ( onObject === true ) {
+      if ( onObject === true ) {
         console.log("Diatas");
         velocity.y = Math.max( 0, velocity.y );
         canJump = true;
-
       } 
 
      
-      /*  fpControls_locked.moveRight( 1  );
-      fpControls_locked.moveForward( 1 );  */
       fpControls_locked.moveRight( - velocity.x * delta * 100 );
       fpControls_locked.moveForward( - velocity.z * delta  * 100);  
 
       fpControls_locked.getObject().position.y += ( velocity.y * delta * 1/2 ); // new behavior
 
       if ( fpControls_locked.getObject().position.y < 5 ) {
-
         velocity.y = 0;
         fpControls_locked.getObject().position.y = 5;
-
         canJump = true;
-
       }
 
     }
 
-
-
-
-
-
-
-
     prevTime = time;
     stats.update();
-    //fpControls.update(clock.getDelta());
-    //fpControls_gamepad.update(clock.getDelta());
     fpControls_locked.load;
     requestAnimationFrame(render);
     renderer.render(scene, camera)
