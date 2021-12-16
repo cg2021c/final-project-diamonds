@@ -187,6 +187,28 @@ function init() {
     scene.add(root);
     objects.push(root);
 
+    gltfLoader_1.load('resource/map/AZoo.gltf', (gltf) =>{
+      gltf.scene.scale.set(0.09, 1, 0.28);
+      var root_1 = gltf.scene;
+      root_1.position.set(-17.3,10.5,32.2);
+      // root_1.rotation.x += Math.PI/(3);
+      root_1.rotation.y += Math.PI/(3);
+      root_1.rotation.z += Math.PI/(2);
+      scene.add(root_1);
+      objects.push(root_1);
+    });
+
+    gltfLoader_1.load('resource/map/SignPost.gltf', (gltf) =>{
+      gltf.scene.scale.set(0.5, 1, 1);
+      var root_1 = gltf.scene;
+      root_1.position.set(-9,6,38);
+      // root_1.rotation.x += Math.PI/(3);
+      root_1.rotation.y += Math.PI/(3);
+      root_1.rotation.z += Math.PI/(2);
+      scene.add(root_1);
+      objects.push(root_1);
+    });
+
     gltfLoader_1.load('resource/map/scene.gltf', (gltf) =>{
       gltf.scene.scale.set(0.1, 0.1, 0.1);
       var root_1 = gltf.scene;
