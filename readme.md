@@ -45,7 +45,7 @@ Controller:
 ## Screenshots
 Welcome Gate
 
-![Welcome](https://user-images.githubusercontent.com/75364000/146399304-d81d1f5d-b95b-4403-88f1-063ba2b019d4.jpeg)
+
 Cage 1
 
 ![Cage1](https://user-images.githubusercontent.com/75364000/146399299-4d29d4de-2354-4bab-9764-3b00ece45a51.jpg)
